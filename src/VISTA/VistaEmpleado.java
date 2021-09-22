@@ -5,6 +5,11 @@
  */
 package VISTA;
 
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuario
@@ -27,7 +32,7 @@ public class VistaEmpleado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
+        DialogoEmpleados = new javax.swing.JDialog();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -39,13 +44,13 @@ public class VistaEmpleado extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtBuscar = new javax.swing.JTextField();
         btnCrearr = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaEmpleados = new javax.swing.JTable();
 
         jLabel3.setText("ID EMPLEADO:");
 
@@ -59,11 +64,11 @@ public class VistaEmpleado extends javax.swing.JFrame {
 
         btnCancelar.setText("CANCELAR");
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
+        javax.swing.GroupLayout DialogoEmpleadosLayout = new javax.swing.GroupLayout(DialogoEmpleados.getContentPane());
+        DialogoEmpleados.getContentPane().setLayout(DialogoEmpleadosLayout);
+        DialogoEmpleadosLayout.setHorizontalGroup(
+            DialogoEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DialogoEmpleadosLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(btnAceptarG, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
@@ -71,38 +76,38 @@ public class VistaEmpleado extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(86, 86, 86))
-            .addGroup(jDialog1Layout.createSequentialGroup()
+            .addGroup(DialogoEmpleadosLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DialogoEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(47, 47, 47)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DialogoEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtIDEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCedulaEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSueldoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
+        DialogoEmpleadosLayout.setVerticalGroup(
+            DialogoEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DialogoEmpleadosLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DialogoEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(txtIDEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DialogoEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(txtCedulaEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DialogoEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(txtSueldoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DialogoEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAceptarG, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DialogoEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnCancelar)
                         .addComponent(btnAceptarE))))
         );
@@ -116,7 +121,7 @@ public class VistaEmpleado extends javax.swing.JFrame {
 
         jLabel2.setText("BUSCAR:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, 20));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 250, -1));
+        getContentPane().add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 250, -1));
 
         btnCrearr.setText("CREAR");
         getContentPane().add(btnCrearr, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, -1, -1));
@@ -128,9 +133,14 @@ public class VistaEmpleado extends javax.swing.JFrame {
         getContentPane().add(btnRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, -1));
 
         btnListar.setText("LISTAR");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -141,49 +151,133 @@ public class VistaEmpleado extends javax.swing.JFrame {
                 "ID EMPLEADO", "CEDULA", "SUELDO"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaEmpleados);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 680, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListarActionPerformed
+
+    public JTable getTablaEmpleados() {
+        return TablaEmpleados;
+    }
+
+    public void setTablaEmpleados(JTable TablaEmpleados) {
+        this.TablaEmpleados = TablaEmpleados;
+    }
+
+    public JTextField getTxtBuscar() {
+        return txtBuscar;
+    }
+
+    public void setTxtBuscar(JTextField txtBuscar) {
+        this.txtBuscar = txtBuscar;
+    }
+
+
+    public JDialog getDialogoEmpleados() {
+        return DialogoEmpleados;
+    }
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaEmpleado().setVisible(true);
-            }
-        });
+    public void setDialogoEmpleados(JDialog DialogoEmpleados) {
+        this.DialogoEmpleados = DialogoEmpleados;
     }
 
+    public JButton getBtnAceptarE() {
+        return btnAceptarE;
+    }
+
+    public void setBtnAceptarE(JButton btnAceptarE) {
+        this.btnAceptarE = btnAceptarE;
+    }
+
+    public JButton getBtnAceptarG() {
+        return btnAceptarG;
+    }
+
+    public void setBtnAceptarG(JButton btnAceptarG) {
+        this.btnAceptarG = btnAceptarG;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
+    public JButton getBtnCrearr() {
+        return btnCrearr;
+    }
+
+    public void setBtnCrearr(JButton btnCrearr) {
+        this.btnCrearr = btnCrearr;
+    }
+
+    public JButton getBtnEditar() {
+        return btnEditar;
+    }
+
+    public void setBtnEditar(JButton btnEditar) {
+        this.btnEditar = btnEditar;
+    }
+
+    public JButton getBtnListar() {
+        return btnListar;
+    }
+
+    public void setBtnListar(JButton btnListar) {
+        this.btnListar = btnListar;
+    }
+
+    public JButton getBtnRemover() {
+        return btnRemover;
+    }
+
+    public void setBtnRemover(JButton btnRemover) {
+        this.btnRemover = btnRemover;
+    }
+
+    public JTextField getTxtCedulaEmpleado() {
+        return txtCedulaEmpleado;
+    }
+
+    public void setTxtCedulaEmpleado(JTextField txtCedulaEmpleado) {
+        this.txtCedulaEmpleado = txtCedulaEmpleado;
+    }
+
+    public JTextField getTxtIDEmpleado() {
+        return txtIDEmpleado;
+    }
+
+    public void setTxtIDEmpleado(JTextField txtIDEmpleado) {
+        this.txtIDEmpleado = txtIDEmpleado;
+    }
+
+    public JTextField getTxtSueldoEmpleado() {
+        return txtSueldoEmpleado;
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public void setTxtSueldoEmpleado(JTextField txtSueldoEmpleado) {
+        this.txtSueldoEmpleado = txtSueldoEmpleado;
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog DialogoEmpleados;
+    private javax.swing.JTable TablaEmpleados;
     private javax.swing.JButton btnAceptarE;
     private javax.swing.JButton btnAceptarG;
     private javax.swing.JButton btnCancelar;
@@ -191,15 +285,13 @@ public class VistaEmpleado extends javax.swing.JFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnListar;
     private javax.swing.JButton btnRemover;
-    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCedulaEmpleado;
     private javax.swing.JTextField txtIDEmpleado;
     private javax.swing.JTextField txtSueldoEmpleado;
