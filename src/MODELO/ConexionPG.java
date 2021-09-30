@@ -24,7 +24,7 @@ public class ConexionPG {
     
     String cadConexion="jdbc:postgresql://localhost:5432/trailersbdd";//Cadena de conexion
     String pgUser="postgres";
-    String pgContra="pepo2001";
+    String pgContra="1234";
     
     
     
