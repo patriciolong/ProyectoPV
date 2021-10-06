@@ -23,6 +23,7 @@ import sun.swing.table.DefaultTableCellHeaderRenderer;
  *
  * @author patri
  */
+//holaaaa
 public class ControlPersona {
     private ModeloPersona modelo;
     private VistaPersonas vista;
