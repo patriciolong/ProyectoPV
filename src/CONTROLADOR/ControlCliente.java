@@ -5,8 +5,11 @@
  */
 package CONTROLADOR;
 
+import MODELO.ModeloCliente;
 import MODELO.ModeloPersona;
+import MODELO.cliente;
 import MODELO.persona;
+import VISTA.VistaClientes;
 import VISTA.VistaPersonas;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -28,11 +31,11 @@ import javax.xml.ws.Holder;
  *
  * @author patri
  */
-public class ControlPersona {
-    private ModeloPersona modelo;
-    private VistaPersonas vista;
+public class ControlCliente {
+    private ModeloCliente modelo;
+    private VistaClientes vista;
 
-    public ControlPersona(ModeloPersona modelo, VistaPersonas vista) {
+    public ControlCliente(ModeloCliente modelo, VistaClientes vista) {
         this.modelo = modelo;
         this.vista = vista;
         
@@ -88,21 +91,17 @@ public class ControlPersona {
 //        DefaultTableCellRenderer renderer = new DefaultTableCellHeaderRenderer();
         
         DefaultTableModel tablaMd;
-        tablaMd=(DefaultTableModel)vista.getTablaPersonas().getModel();
+        tablaMd=(DefaultTableModel)vista.getTablaClientes().getModel();
         tablaMd.setNumRows(0);
-        List<persona> lista= modelo.listaPersonas(aguja);
+        List<cliente> lista= modelo.listaCliente(aguja);
         int ncols=tablaMd.getColumnCount();
         Holder<Integer> i= new Holder<>(0);
         lista.stream().forEach(p->{
             
             tablaMd.addRow(new Object[ncols]);
-            vista.getTablaPersonas().setValueAt(p.getCedula(), i.value, 0);
-             vista.getTablaPersonas().setValueAt(p.getNombre(), i.value, 1);
-              vista.getTablaPersonas().setValueAt(p.getApellido(), i.value, 2);
-               vista.getTablaPersonas().setValueAt(p.getTelefono(), i.value, 3);
-                vista.getTablaPersonas().setValueAt(p.getEmail(), i.value, 4);
-                 vista.getTablaPersonas().setValueAt(p.getGenero(), i.value, 5);
-                  vista.getTablaPersonas().setValueAt(p.getDireccion(), i.value, 6);
+            vista.getTablaClientes().setValueAt(p.getId_cliente(), i.value, 0);
+             vista.getTablaClientes().setValueAt(p.getCedula(), i.value, 1);
+              
                    
                    
 //                   Image img =p.getFoto();
@@ -133,16 +132,16 @@ public class ControlPersona {
     
     private void cargarDialogo(int origen){
         
-        vista.getDialogoPersonas().setSize(600, 500);
-        vista.getDialogoPersonas().setLocationRelativeTo(vista);
+        vista.getDialogoClientes().setSize(600, 500);
+        vista.getDialogoClientes().setLocationRelativeTo(vista);
         if (origen==1) {
-            vista.getDialogoPersonas().setTitle("Crear Persona");
+            vista.getDialogoClientes().setTitle("Crear Cliente");
             vista.getBtnAceptarE().setVisible(false);
             vista.getBtnAceptarG().setVisible(true);
-             vista.getDialogoPersonas().setVisible(true);
+             vista.getDialogoClientes().setVisible(true);
         }
         else{
-            vista.getDialogoPersonas().setTitle("Editar Persona");
+            vista.getDialogoClientes().setTitle("Editar Cliente");
             vista.getBtnAceptarG().setVisible(false);
             vista.getBtnAceptarE().setVisible(true);
 //             vista.getDigPersona().setVisible(true);
@@ -152,69 +151,49 @@ public class ControlPersona {
     
     private void seleccionar(){
        
-        int seleccion = vista.getTablaPersonas().getSelectedRow();
+        int seleccion = vista.getTablaClientes().getSelectedRow();
         if (seleccion<0) {
             JOptionPane.showMessageDialog(null, "SELECCIONE UN USUARIO");
            
         }else{
-        vista.getDialogoPersonas().setVisible(true);
-        vista.getTxtCedula().setText(String.valueOf(vista.getTablaPersonas().getValueAt(seleccion,0)));
-        vista.getTxtNombre().setText(String.valueOf(vista.getTablaPersonas().getValueAt(seleccion,1)));
-        vista.getTxtApellido().setText(String.valueOf(vista.getTablaPersonas().getValueAt(seleccion,2)));
-        vista.getTxtTelefono().setText(String.valueOf(vista.getTablaPersonas().getValueAt(seleccion,3)));
-        vista.getTxtEmail().setText(String.valueOf(vista.getTablaPersonas().getValueAt(seleccion,4)));
-        vista.getTxtGenero().setText(String.valueOf(vista.getTablaPersonas().getValueAt(seleccion,5)));
-        vista.getTxtDireccion().setText(String.valueOf(vista.getTablaPersonas().getValueAt(seleccion,6)));
+        vista.getDialogoClientes().setVisible(true);
+        vista.getTxtCedula().setText(String.valueOf(vista.getTablaClientes().getValueAt(seleccion,1)));
+        vista.getTxtIDCliente().setText(String.valueOf(vista.getTablaClientes().getValueAt(seleccion,0)));
+        
         } 
     }
     
     private void editar(){
         String cedula=vista.getTxtCedula().getText();
-        String nombres=vista.getTxtNombre().getText();
-        String apellidos=vista.getTxtApellido().getText();
+        int idCliente=Integer.parseInt(vista.getTxtIDCliente().getText()) ;
         
+        ModeloCliente cliente= new ModeloCliente();
+        cliente.setCedula(cedula);
+        cliente.setId_cliente(idCliente);
         
-//        Instant instant= vista.getTxtFecha().getDate().toInstant();
-//        ZoneId zid = ZoneId.of("America/Guayaquil");
-//        ZonedDateTime zdt=ZonedDateTime.ofInstant(instant, zid);
-//        Date fecha=Date.valueOf(zdt.toLocalDate());
-        
-        String telefono=vista.getTxtTelefono().getText();
-        String genero=vista.getTxtGenero().getText();
-        String direccion=vista.getTxtDireccion().getText();
-        String email=vista.getTxtEmail().getText();
-        ModeloPersona persona= new ModeloPersona();
-        persona.setApellido(apellidos);
-        persona.setNombre(nombres);
-        persona.setCedula(cedula);
-//        persona.setFechaNacimiento(fecha);
-        persona.setTelefono(telefono);
-        persona.setGenero(genero);
-        persona.setDireccion(direccion);
-        persona.setEmail(email);
         
 //        ImageIcon ic=(ImageIcon)vista.getTxtFoto().getIcon();
 //        persona.setFoto(ic.getImage());
         
         
-        persona.editar(cedula);
+        cliente.editar(cedula);
         
         
-        vista.getDialogoPersonas().setVisible(false);
+        vista.getDialogoClientes().setVisible(false);
     }
     
     private void remover(){
-         int seleccion = vista.getTablaPersonas().getSelectedRow();
+         int seleccion = vista.getTablaClientes().getSelectedRow();
         if (seleccion<0) {
             JOptionPane.showMessageDialog(null, "SELECCIONE UN USUARIO");
            
         }else{
            int salida= JOptionPane.showConfirmDialog(null, "Seguro?",null,JOptionPane.YES_NO_OPTION);
             if (salida==0) {
-                vista.getTxtCedula().setText(String.valueOf(vista.getTablaPersonas().getValueAt(seleccion,0)));
+                vista.getTxtCedula().setText(String.valueOf(vista.getTablaClientes().getValueAt(seleccion,1)));
         String cedula=vista.getTxtCedula().getText();
-        ModeloPersona persona= new ModeloPersona();
-        persona.remover(cedula);
+        ModeloCliente cliente= new ModeloCliente();
+        cliente.remover(cedula);
         JOptionPane.showMessageDialog(null, "OK Lo Elimine");
             }else{
                 JOptionPane.showMessageDialog(null, "OK no hice nada");
@@ -228,30 +207,14 @@ public class ControlPersona {
      private void grabaPersona(){
         String cedula = vista.getTxtCedula().getText();
         //String idpersona=vista.getTxtId().getText();
-        String nombres=vista.getTxtNombre().getText();
-        String apellidos=vista.getTxtApellido().getText();
+        int idCliente=Integer.parseInt(vista.getTxtIDCliente().getText());
         
         
-//        Instant instant= vista.getTxtFecha().getDate().toInstant();
-//        ZoneId zid = ZoneId.of("America/Guayaquil");
-//        ZonedDateTime zdt=ZonedDateTime.ofInstant(instant, zid);
-//        Date fecha=Date.valueOf(zdt.toLocalDate());
         
-        String telefono=vista.getTxtTelefono().getText();
-        String genero=vista.getTxtGenero().getText();
-        String email = vista.getTxtEmail().getText();
-        String direccion = vista.getTxtDireccion().getText();
+        ModeloCliente cliente= new ModeloCliente();
+        cliente.setCedula(cedula);
+        cliente.setId_cliente(idCliente);
         
-        
-        ModeloPersona persona= new ModeloPersona();
-        persona.setApellido(apellidos);
-        persona.setNombre(nombres);
-        persona.setCedula(cedula);
-        
-        persona.setTelefono(telefono);
-        persona.setEmail(email);
-        persona.setGenero(genero);
-        persona.setDireccion(direccion);
        
         
        
@@ -260,16 +223,16 @@ public class ControlPersona {
 //        ImageIcon ic=(ImageIcon)vista.getTxtFoto().getIcon();
 //        persona.setFoto(ic.getImage());
         
-        persona.grabar();
+        cliente.grabar();
         
-        vista.getDialogoPersonas().setVisible(false);
+        vista.getDialogoClientes().setVisible(false);
 
         
     }
     
     
      private void cancelar(){
-        vista.getDialogoPersonas().setVisible(false);
+        vista.getDialogoClientes().setVisible(false);
     }
     
     

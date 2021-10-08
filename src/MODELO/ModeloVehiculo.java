@@ -21,13 +21,13 @@ import org.postgresql.util.Base64;
  *
  * @author patri
  */
-public class ModeloPersona extends persona{
+public class ModeloVehiculo extends persona{
     
     private ConexionPG con = new ConexionPG();
-     public ModeloPersona() {
+     public ModeloVehiculo() {
     }
 
-    public ModeloPersona(String cedula, String nombre, String apellido, String telefono, String email, String genero, String direccion) {
+    public ModeloVehiculo(String cedula, String nombre, String apellido, String telefono, String email, String genero, String direccion) {
         super(cedula, nombre, apellido, telefono, email, genero, direccion);
     }
     
@@ -68,7 +68,7 @@ public class ModeloPersona extends persona{
             rs.close();
             return lista;
         } catch (SQLException ex) {
-            Logger.getLogger(ModeloPersona.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModeloVehiculo.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
         

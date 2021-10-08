@@ -16,7 +16,7 @@ import javax.swing.JTextField;
  *
  * @author Usuario
  */
-public class VistaCargas extends javax.swing.JFrame {
+public class VistaCargas extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form VistaEmpleado

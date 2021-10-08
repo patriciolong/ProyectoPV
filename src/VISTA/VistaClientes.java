@@ -14,7 +14,7 @@ import javax.swing.JTextField;
  *
  * @author Usuario
  */
-public class VistaClientes extends javax.swing.JFrame {
+public class VistaClientes extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form VistaEmpleado

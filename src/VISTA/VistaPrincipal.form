@@ -14,6 +14,32 @@
                 <Property name="text" type="java.lang.String" value="Crud Personas"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MenuCrudCliente">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CrudClientes"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MenuCrudEmpleado">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CrudEmpleados"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuCrudEmpleadoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MenuCrudCargas">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CrudCargas"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MenuCrudVehiculos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CrudVehiculos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuCrudVehiculosActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MenuReportePeronas">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reporte Personas"/>
@@ -102,7 +128,39 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="tlbCrudPersona">
           <Properties>
-            <Property name="text" type="java.lang.String" value="CRUD"/>
+            <Property name="text" type="java.lang.String" value="PERSONA"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="tlbCrudClientes">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CLIENTES"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="tlbCrudEmpleados">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="EMPLEADOS"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="tlbCrudCargas">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CARGAS"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="tlbCrudVehiculos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="VEHICULOS"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>

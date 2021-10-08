@@ -21,46 +21,31 @@ import org.postgresql.util.Base64;
  *
  * @author patri
  */
-public class ModeloPersona extends persona{
+public class ModeloCliente extends cliente{
     
     private ConexionPG con = new ConexionPG();
-     public ModeloPersona() {
+     public ModeloCliente() {
     }
 
-    public ModeloPersona(String cedula, String nombre, String apellido, String telefono, String email, String genero, String direccion) {
-        super(cedula, nombre, apellido, telefono, email, genero, direccion);
+    public ModeloCliente(int id_cliente, String cedula, String nombre, String apellido, String telefono, String email, String genero, String direccion) {
+        super(id_cliente, cedula, nombre, apellido, telefono, email, genero, direccion);
     }
+
+   
     
-    public List<persona> listaPersonas(String aguja){
-        String sql="select * from persona "
-                + "where lower(nombre) like lower('%"+aguja+"%') or "
-                + "lower(apellido) like lower('%"+aguja+"%') or "
-                + "lower(cedula) like lower('%"+aguja+"%')";
+    public List<cliente> listaCliente(String aguja){
+        String sql="select * from cliente "
+                + "where lower(cedula) like lower('%"+aguja+"%')";
         ResultSet rs=con.consulta(sql);
-        List<persona> lista=new ArrayList<persona>();
+        List<cliente> lista=new ArrayList<cliente>();
         byte[] bf;
         
         try {
             
             while(rs.next()){
-                persona p=new persona();
+                cliente p=new cliente();
                 p.setCedula(rs.getString("cedula"));
-                p.setNombre(rs.getString("nombre"));
-                p.setApellido(rs.getString("apellido"));
-                p.setTelefono(rs.getString("telefono"));
-//                p.setFechaNacimiento(rs.getDate("fechanacimiento"));
-                p.setEmail(rs.getString("email"));
-                p.setGenero(rs.getString("genero"));
-                p.setDireccion(rs.getString("direccion"));
-                
-//                bf=rs.getBytes("foto");
-//                if (bf!=null) {
-//                    bf=Base64.decode(bf,0,bf.length);
-//                    try {
-//                        p.setFoto(obteberImagen(bf));
-//                    } catch (IOException ex) {
-//                        Logger.getLogger(ModeloPersona.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
+                p.setId_cliente(rs.getInt("id_cliente"));
 //                }
                 lista.add(p);
                 
@@ -68,7 +53,7 @@ public class ModeloPersona extends persona{
             rs.close();
             return lista;
         } catch (SQLException ex) {
-            Logger.getLogger(ModeloPersona.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
         
@@ -88,20 +73,16 @@ public class ModeloPersona extends persona{
 //            
 //        }
         String sql;
-        sql="update persona "
-                + "set nombre='"+getNombre()+"' "
-                + ",apellido='"+getApellido()+"' "
-                + ",telefono='"+getTelefono()+"' "
-                + ",genero='"+getGenero()+"' "
-                + ",email='"+getEmail()+"' "
-                + ",direccion='"+getDireccion()+"' "
-                + "where cedula='"+cedula+"'";
+        sql="update cliente "
+                + "set cedula='"+getCedula()+"' "
+                + ",id_cliente='"+getId_cliente()+"' ";
+                
          con.accion(sql);
     }
     
     public void remover(String cedula){
         String sql;
-        sql="delete from persona "
+        sql="delete from cliente "
                 + "where cedula='"+cedula+"'";
          con.accion(sql);
     }
@@ -120,9 +101,8 @@ public class ModeloPersona extends persona{
 //        }
         
         String sql;
-        sql="insert into persona(cedula,nombre,apellido,telefono,email,genero,direccion) "
-                + "values('"+getCedula()+"','"+getNombre()+"','"+getApellido()+"','"+getTelefono()+"'"
-                + ",'"+getEmail()+"','"+getGenero()+"','"+getDireccion()+"')";
+        sql="insert into cliente(cedula,id_cliente) "
+                + "values('"+getCedula()+"','"+getId_cliente()+"')";
          con.accion(sql);
     }
      

@@ -28,11 +28,11 @@ import javax.xml.ws.Holder;
  *
  * @author patri
  */
-public class ControlPersona {
+public class ControlVehiculos {
     private ModeloPersona modelo;
     private VistaPersonas vista;
 
-    public ControlPersona(ModeloPersona modelo, VistaPersonas vista) {
+    public ControlVehiculos(ModeloPersona modelo, VistaPersonas vista) {
         this.modelo = modelo;
         this.vista = vista;
         

@@ -5,8 +5,11 @@
  */
 package CONTROLADOR;
 
+import MODELO.ModeloEmpleado;
 import MODELO.ModeloPersona;
+import MODELO.empleado;
 import MODELO.persona;
+import VISTA.VistaEmpleado;
 import VISTA.VistaPersonas;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -28,15 +31,15 @@ import javax.xml.ws.Holder;
  *
  * @author patri
  */
-public class ControlPersona {
-    private ModeloPersona modelo;
-    private VistaPersonas vista;
+public class ControlEmpleado {
+    private ModeloEmpleado modelo;
+    private VistaEmpleado vista;
 
-    public ControlPersona(ModeloPersona modelo, VistaPersonas vista) {
+    public ControlEmpleado(ModeloEmpleado modelo, VistaEmpleado vista) {
         this.modelo = modelo;
         this.vista = vista;
         
-        vista.setTitle("CRUD PERSONA");
+        vista.setTitle("CRUD EMPLEADO");
         vista.setVisible(true);
         cargalista("");
     }
@@ -88,21 +91,18 @@ public class ControlPersona {
 //        DefaultTableCellRenderer renderer = new DefaultTableCellHeaderRenderer();
         
         DefaultTableModel tablaMd;
-        tablaMd=(DefaultTableModel)vista.getTablaPersonas().getModel();
+        tablaMd=(DefaultTableModel)vista.getTablaEmpleados().getModel();
         tablaMd.setNumRows(0);
-        List<persona> lista= modelo.listaPersonas(aguja);
+        List<empleado> lista= modelo.listaEmpleado(aguja);
         int ncols=tablaMd.getColumnCount();
         Holder<Integer> i= new Holder<>(0);
         lista.stream().forEach(p->{
             
             tablaMd.addRow(new Object[ncols]);
-            vista.getTablaPersonas().setValueAt(p.getCedula(), i.value, 0);
-             vista.getTablaPersonas().setValueAt(p.getNombre(), i.value, 1);
-              vista.getTablaPersonas().setValueAt(p.getApellido(), i.value, 2);
-               vista.getTablaPersonas().setValueAt(p.getTelefono(), i.value, 3);
-                vista.getTablaPersonas().setValueAt(p.getEmail(), i.value, 4);
-                 vista.getTablaPersonas().setValueAt(p.getGenero(), i.value, 5);
-                  vista.getTablaPersonas().setValueAt(p.getDireccion(), i.value, 6);
+            vista.getTablaEmpleados().setValueAt(p.getId_empleado(), i.value, 0);
+             vista.getTablaEmpleados().setValueAt(p.getCedula(), i.value, 1);
+              vista.getTablaEmpleados().setValueAt(p.getSueldo(), i.value, 2);
+               
                    
                    
 //                   Image img =p.getFoto();
@@ -133,16 +133,16 @@ public class ControlPersona {
     
     private void cargarDialogo(int origen){
         
-        vista.getDialogoPersonas().setSize(600, 500);
-        vista.getDialogoPersonas().setLocationRelativeTo(vista);
+        vista.getDialogoEmpleados().setSize(600, 500);
+        vista.getDialogoEmpleados().setLocationRelativeTo(vista);
         if (origen==1) {
-            vista.getDialogoPersonas().setTitle("Crear Persona");
+            vista.getDialogoEmpleados().setTitle("Crear Empleado");
             vista.getBtnAceptarE().setVisible(false);
             vista.getBtnAceptarG().setVisible(true);
-             vista.getDialogoPersonas().setVisible(true);
+             vista.getDialogoEmpleados().setVisible(true);
         }
         else{
-            vista.getDialogoPersonas().setTitle("Editar Persona");
+            vista.getDialogoEmpleados().setTitle("Editar Empleado");
             vista.getBtnAceptarG().setVisible(false);
             vista.getBtnAceptarE().setVisible(true);
 //             vista.getDigPersona().setVisible(true);
@@ -152,69 +152,52 @@ public class ControlPersona {
     
     private void seleccionar(){
        
-        int seleccion = vista.getTablaPersonas().getSelectedRow();
+        int seleccion = vista.getTablaEmpleados().getSelectedRow();
         if (seleccion<0) {
             JOptionPane.showMessageDialog(null, "SELECCIONE UN USUARIO");
            
         }else{
-        vista.getDialogoPersonas().setVisible(true);
-        vista.getTxtCedula().setText(String.valueOf(vista.getTablaPersonas().getValueAt(seleccion,0)));
-        vista.getTxtNombre().setText(String.valueOf(vista.getTablaPersonas().getValueAt(seleccion,1)));
-        vista.getTxtApellido().setText(String.valueOf(vista.getTablaPersonas().getValueAt(seleccion,2)));
-        vista.getTxtTelefono().setText(String.valueOf(vista.getTablaPersonas().getValueAt(seleccion,3)));
-        vista.getTxtEmail().setText(String.valueOf(vista.getTablaPersonas().getValueAt(seleccion,4)));
-        vista.getTxtGenero().setText(String.valueOf(vista.getTablaPersonas().getValueAt(seleccion,5)));
-        vista.getTxtDireccion().setText(String.valueOf(vista.getTablaPersonas().getValueAt(seleccion,6)));
+        vista.getDialogoEmpleados().setVisible(true);
+        vista.getTxtIDEmpleado().setText(String.valueOf(vista.getTablaEmpleados().getValueAt(seleccion,0)));
+        vista.getTxtCedulaEmpleado().setText(String.valueOf(vista.getTablaEmpleados().getValueAt(seleccion,1)));
+        vista.getTxtSueldoEmpleado().setText(String.valueOf(vista.getTablaEmpleados().getValueAt(seleccion,2)));
+        
         } 
     }
     
     private void editar(){
-        String cedula=vista.getTxtCedula().getText();
-        String nombres=vista.getTxtNombre().getText();
-        String apellidos=vista.getTxtApellido().getText();
+        String cedula=vista.getTxtCedulaEmpleado().getText();
+        int id_empleado=Integer.parseInt( vista.getTxtIDEmpleado().getText());
+        int sueldo=Integer.parseInt(vista.getTxtSueldoEmpleado().getText());
         
-        
-//        Instant instant= vista.getTxtFecha().getDate().toInstant();
-//        ZoneId zid = ZoneId.of("America/Guayaquil");
-//        ZonedDateTime zdt=ZonedDateTime.ofInstant(instant, zid);
-//        Date fecha=Date.valueOf(zdt.toLocalDate());
-        
-        String telefono=vista.getTxtTelefono().getText();
-        String genero=vista.getTxtGenero().getText();
-        String direccion=vista.getTxtDireccion().getText();
-        String email=vista.getTxtEmail().getText();
-        ModeloPersona persona= new ModeloPersona();
-        persona.setApellido(apellidos);
-        persona.setNombre(nombres);
-        persona.setCedula(cedula);
-//        persona.setFechaNacimiento(fecha);
-        persona.setTelefono(telefono);
-        persona.setGenero(genero);
-        persona.setDireccion(direccion);
-        persona.setEmail(email);
+        ModeloEmpleado empleado= new ModeloEmpleado();
+        empleado.setCedula(cedula);
+        empleado.setId_empleado(id_empleado);
+        empleado.setSueldo(sueldo);
+//       
         
 //        ImageIcon ic=(ImageIcon)vista.getTxtFoto().getIcon();
 //        persona.setFoto(ic.getImage());
         
         
-        persona.editar(cedula);
+        empleado.editar(cedula);
         
         
-        vista.getDialogoPersonas().setVisible(false);
+        vista.getDialogoEmpleados().setVisible(false);
     }
     
     private void remover(){
-         int seleccion = vista.getTablaPersonas().getSelectedRow();
+         int seleccion = vista.getTablaEmpleados().getSelectedRow();
         if (seleccion<0) {
             JOptionPane.showMessageDialog(null, "SELECCIONE UN USUARIO");
            
         }else{
            int salida= JOptionPane.showConfirmDialog(null, "Seguro?",null,JOptionPane.YES_NO_OPTION);
             if (salida==0) {
-                vista.getTxtCedula().setText(String.valueOf(vista.getTablaPersonas().getValueAt(seleccion,0)));
-        String cedula=vista.getTxtCedula().getText();
-        ModeloPersona persona= new ModeloPersona();
-        persona.remover(cedula);
+                vista.getTxtCedulaEmpleado().setText(String.valueOf(vista.getTablaEmpleados().getValueAt(seleccion,0)));
+        String cedula=vista.getTxtCedulaEmpleado().getText();
+        ModeloEmpleado empleado= new ModeloEmpleado();
+        empleado.remover(cedula);
         JOptionPane.showMessageDialog(null, "OK Lo Elimine");
             }else{
                 JOptionPane.showMessageDialog(null, "OK no hice nada");
@@ -226,32 +209,18 @@ public class ControlPersona {
     
     
      private void grabaPersona(){
-        String cedula = vista.getTxtCedula().getText();
+        String cedula = vista.getTxtCedulaEmpleado().getText();
         //String idpersona=vista.getTxtId().getText();
-        String nombres=vista.getTxtNombre().getText();
-        String apellidos=vista.getTxtApellido().getText();
+        int idEmpleado=Integer.parseInt(vista.getTxtIDEmpleado().getText()) ;
+        int sueldo=Integer.parseInt(vista.getTxtSueldoEmpleado().getText());
+      
+        
+        ModeloEmpleado empleado= new ModeloEmpleado();
+        empleado.setCedula(cedula);
+        empleado.setId_empleado(idEmpleado);
+        empleado.setSueldo(sueldo);
         
         
-//        Instant instant= vista.getTxtFecha().getDate().toInstant();
-//        ZoneId zid = ZoneId.of("America/Guayaquil");
-//        ZonedDateTime zdt=ZonedDateTime.ofInstant(instant, zid);
-//        Date fecha=Date.valueOf(zdt.toLocalDate());
-        
-        String telefono=vista.getTxtTelefono().getText();
-        String genero=vista.getTxtGenero().getText();
-        String email = vista.getTxtEmail().getText();
-        String direccion = vista.getTxtDireccion().getText();
-        
-        
-        ModeloPersona persona= new ModeloPersona();
-        persona.setApellido(apellidos);
-        persona.setNombre(nombres);
-        persona.setCedula(cedula);
-        
-        persona.setTelefono(telefono);
-        persona.setEmail(email);
-        persona.setGenero(genero);
-        persona.setDireccion(direccion);
        
         
        
@@ -260,16 +229,16 @@ public class ControlPersona {
 //        ImageIcon ic=(ImageIcon)vista.getTxtFoto().getIcon();
 //        persona.setFoto(ic.getImage());
         
-        persona.grabar();
+        empleado.grabar();
         
-        vista.getDialogoPersonas().setVisible(false);
+        vista.getDialogoEmpleados().setVisible(false);
 
         
     }
     
     
      private void cancelar(){
-        vista.getDialogoPersonas().setVisible(false);
+        vista.getDialogoEmpleados().setVisible(false);
     }
     
     

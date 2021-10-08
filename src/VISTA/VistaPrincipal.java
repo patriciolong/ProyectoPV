@@ -34,9 +34,17 @@ public class VistaPrincipal extends javax.swing.JFrame {
         dskPrincipal = new javax.swing.JDesktopPane();
         jToolBar1 = new javax.swing.JToolBar();
         tlbCrudPersona = new javax.swing.JButton();
+        tlbCrudClientes = new javax.swing.JButton();
+        tlbCrudEmpleados = new javax.swing.JButton();
+        tlbCrudCargas = new javax.swing.JButton();
+        tlbCrudVehiculos = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         MenuCrudPersona = new javax.swing.JMenuItem();
+        MenuCrudCliente = new javax.swing.JMenuItem();
+        MenuCrudEmpleado = new javax.swing.JMenuItem();
+        MenuCrudCargas = new javax.swing.JMenuItem();
+        MenuCrudVehiculos = new javax.swing.JMenuItem();
         MenuReportePeronas = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         MenuSalir = new javax.swing.JMenuItem();
@@ -57,16 +65,62 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        tlbCrudPersona.setText("CRUD");
+        tlbCrudPersona.setText("PERSONA");
         tlbCrudPersona.setFocusable(false);
         tlbCrudPersona.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         tlbCrudPersona.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(tlbCrudPersona);
 
+        tlbCrudClientes.setText("CLIENTES");
+        tlbCrudClientes.setFocusable(false);
+        tlbCrudClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        tlbCrudClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(tlbCrudClientes);
+
+        tlbCrudEmpleados.setText("EMPLEADOS");
+        tlbCrudEmpleados.setFocusable(false);
+        tlbCrudEmpleados.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        tlbCrudEmpleados.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(tlbCrudEmpleados);
+
+        tlbCrudCargas.setText("CARGAS");
+        tlbCrudCargas.setFocusable(false);
+        tlbCrudCargas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        tlbCrudCargas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(tlbCrudCargas);
+
+        tlbCrudVehiculos.setText("VEHICULOS");
+        tlbCrudVehiculos.setFocusable(false);
+        tlbCrudVehiculos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        tlbCrudVehiculos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(tlbCrudVehiculos);
+
         jMenu2.setText("Personas");
 
         MenuCrudPersona.setText("Crud Personas");
         jMenu2.add(MenuCrudPersona);
+
+        MenuCrudCliente.setText("CrudClientes");
+        jMenu2.add(MenuCrudCliente);
+
+        MenuCrudEmpleado.setText("CrudEmpleados");
+        MenuCrudEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCrudEmpleadoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(MenuCrudEmpleado);
+
+        MenuCrudCargas.setText("CrudCargas");
+        jMenu2.add(MenuCrudCargas);
+
+        MenuCrudVehiculos.setText("CrudVehiculos");
+        MenuCrudVehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCrudVehiculosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(MenuCrudVehiculos);
 
         MenuReportePeronas.setText("Reporte Personas");
         jMenu2.add(MenuReportePeronas);
@@ -110,9 +164,83 @@ public class VistaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MenuSalirActionPerformed
 
+    private void MenuCrudEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCrudEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuCrudEmpleadoActionPerformed
+
+    private void MenuCrudVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCrudVehiculosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuCrudVehiculosActionPerformed
+
+
+    
+    
+    public JMenuItem getMenuCrudCargas() {
+        return MenuCrudCargas;
+    }
+
+    public void setMenuCrudCargas(JMenuItem MenuCrudCargas) {
+        this.MenuCrudCargas = MenuCrudCargas;
+    }
+
+    public JMenuItem getMenuCrudCliente() {
+        return MenuCrudCliente;
+    }
+
+    public void setMenuCrudCliente(JMenuItem MenuCrudCliente) {
+        this.MenuCrudCliente = MenuCrudCliente;
+    }
+
+    public JMenuItem getMenuCrudEmpleado() {
+        return MenuCrudEmpleado;
+    }
+
+    public void setMenuCrudEmpleado(JMenuItem MenuCrudEmpleado) {
+        this.MenuCrudEmpleado = MenuCrudEmpleado;
+    }
+
+    public JMenuItem getMenuCrudVehiculos() {
+        return MenuCrudVehiculos;
+    }
+
+    public void setMenuCrudVehiculos(JMenuItem MenuCrudVehiculos) {
+        this.MenuCrudVehiculos = MenuCrudVehiculos;
+    }
+
+    public JButton getTlbCrudCargas() {
+        return tlbCrudCargas;
+    }
+
+    public void setTlbCrudCargas(JButton tlbCrudCargas) {
+        this.tlbCrudCargas = tlbCrudCargas;
+    }
+
+    public JButton getTlbCrudClientes() {
+        return tlbCrudClientes;
+    }
+
+    public void setTlbCrudClientes(JButton tlbCrudClientes) {
+        this.tlbCrudClientes = tlbCrudClientes;
+    }
+
+    public JButton getTlbCrudEmpleados() {
+        return tlbCrudEmpleados;
+    }
+
+    public void setTlbCrudEmpleados(JButton tlbCrudEmpleados) {
+        this.tlbCrudEmpleados = tlbCrudEmpleados;
+    }
+
+    public JButton getTlbCrudVehiculos() {
+        return tlbCrudVehiculos;
+    }
+
     /**
      * @param args the command line arguments
      */
+    public void setTlbCrudVehiculos(JButton tlbCrudVehiculos) {
+        this.tlbCrudVehiculos = tlbCrudVehiculos;
+    }
 
     public JMenuItem getMenuCrudPersona() {
         return MenuCrudPersona;
@@ -159,7 +287,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuCrudCargas;
+    private javax.swing.JMenuItem MenuCrudCliente;
+    private javax.swing.JMenuItem MenuCrudEmpleado;
     private javax.swing.JMenuItem MenuCrudPersona;
+    private javax.swing.JMenuItem MenuCrudVehiculos;
     private javax.swing.JMenuItem MenuReportePeronas;
     private javax.swing.JMenuItem MenuSalir;
     private javax.swing.JDesktopPane dskPrincipal;
@@ -168,6 +300,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JButton tlbCrudCargas;
+    private javax.swing.JButton tlbCrudClientes;
+    private javax.swing.JButton tlbCrudEmpleados;
     private javax.swing.JButton tlbCrudPersona;
+    private javax.swing.JButton tlbCrudVehiculos;
     // End of variables declaration//GEN-END:variables
 }

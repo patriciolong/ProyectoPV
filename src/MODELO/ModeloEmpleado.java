@@ -21,29 +21,29 @@ import org.postgresql.util.Base64;
  *
  * @author patri
  */
-public class ModeloPersona extends persona{
+public class ModeloEmpleado extends empleado{
     
     private ConexionPG con = new ConexionPG();
-     public ModeloPersona() {
+     public ModeloEmpleado() {
     }
 
-    public ModeloPersona(String cedula, String nombre, String apellido, String telefono, String email, String genero, String direccion) {
-        super(cedula, nombre, apellido, telefono, email, genero, direccion);
+    public ModeloEmpleado(int id_empleado, double sueldo, String cedula, String nombre, String apellido, String telefono, String email, String genero, String direccion) {
+        super(id_empleado, sueldo, cedula, nombre, apellido, telefono, email, genero, direccion);
     }
+
     
-    public List<persona> listaPersonas(String aguja){
-        String sql="select * from persona "
-                + "where lower(nombre) like lower('%"+aguja+"%') or "
-                + "lower(apellido) like lower('%"+aguja+"%') or "
-                + "lower(cedula) like lower('%"+aguja+"%')";
+    
+    public List<empleado> listaEmpleado(String aguja){
+        String sql="select * from empleado "
+                + "where lower(cedula) like lower('%"+aguja+"%')";
         ResultSet rs=con.consulta(sql);
-        List<persona> lista=new ArrayList<persona>();
+        List<empleado> lista=new ArrayList<empleado>();
         byte[] bf;
         
         try {
             
             while(rs.next()){
-                persona p=new persona();
+                empleado p=new empleado();
                 p.setCedula(rs.getString("cedula"));
                 p.setNombre(rs.getString("nombre"));
                 p.setApellido(rs.getString("apellido"));
@@ -68,7 +68,7 @@ public class ModeloPersona extends persona{
             rs.close();
             return lista;
         } catch (SQLException ex) {
-            Logger.getLogger(ModeloPersona.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModeloEmpleado.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
         
