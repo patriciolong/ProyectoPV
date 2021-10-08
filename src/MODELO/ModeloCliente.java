@@ -34,8 +34,8 @@ public class ModeloCliente extends cliente{
    
     
     public List<cliente> listaCliente(String aguja){
-        String sql="select * from cliente "
-                + "where lower(cedula) like lower('%"+aguja+"%')";
+        String sql="select id_cliente, c.cedula,nombre, apellido,telefono, email, genero, direccion from cliente c join  persona p on c.cedula = p.cedula "
+                + "where lower(c.cedula) like lower('%"+aguja+"%')";
         ResultSet rs=con.consulta(sql);
         List<cliente> lista=new ArrayList<cliente>();
         byte[] bf;
@@ -46,6 +46,14 @@ public class ModeloCliente extends cliente{
                 cliente p=new cliente();
                 p.setCedula(rs.getString("cedula"));
                 p.setId_cliente(rs.getInt("id_cliente"));
+//                 p.setCedula(rs.getString("cedula"));
+                p.setNombre(rs.getString("nombre"));
+                p.setApellido(rs.getString("apellido"));
+                p.setTelefono(rs.getString("telefono"));
+//                p.setFechaNacimiento(rs.getDate("fechanacimiento"));
+                p.setEmail(rs.getString("email"));
+                p.setGenero(rs.getString("genero"));
+                p.setDireccion(rs.getString("direccion"));
 //                }
                 lista.add(p);
                 

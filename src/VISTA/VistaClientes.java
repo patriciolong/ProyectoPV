@@ -103,7 +103,7 @@ public class VistaClientes extends javax.swing.JInternalFrame {
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -128,13 +128,13 @@ public class VistaClientes extends javax.swing.JInternalFrame {
 
         TablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID_CLIENTE", "CEDULA"
+                "ID_CLIENTE", "CEDULA", "NOMBRE", "APELLIDO", "TELEFONO", "EMAIL", "GENERO", "DIRECCION"
             }
         ));
         jScrollPane1.setViewportView(TablaClientes);

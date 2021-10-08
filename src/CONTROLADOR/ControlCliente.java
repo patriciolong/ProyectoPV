@@ -101,6 +101,12 @@ public class ControlCliente {
             tablaMd.addRow(new Object[ncols]);
             vista.getTablaClientes().setValueAt(p.getId_cliente(), i.value, 0);
              vista.getTablaClientes().setValueAt(p.getCedula(), i.value, 1);
+              vista.getTablaClientes().setValueAt(p.getNombre(), i.value, 2);
+              vista.getTablaClientes().setValueAt(p.getApellido(), i.value, 3);
+               vista.getTablaClientes().setValueAt(p.getTelefono(), i.value, 4);
+                vista.getTablaClientes().setValueAt(p.getEmail(), i.value, 5);
+                 vista.getTablaClientes().setValueAt(p.getGenero(), i.value, 6);
+                  vista.getTablaClientes().setValueAt(p.getDireccion(), i.value, 7);
               
                    
                    
